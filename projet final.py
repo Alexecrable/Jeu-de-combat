@@ -6,17 +6,13 @@ from pygame import mixer
 def Victoire():
     global Y_mort,A_mort,A_image,A_app,A_sprites,A_app,Y_app,A_app_aux,Stage_app,Y_sprites,Y_image,Y_app
     if Y_mort==1:
-
-
-
-
-
-        A_image=PhotoImage(file=sprite_A_victoire[A_sprites])
+        A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_victoire[A_sprites]}")
         can.itemconfigure(A_app,image=A_image)
         can.coords(A_app,950,500)
         A_sprites=A_sprites+1
+
     else:
-        Y_image=PhotoImage(file=sprite_Y_victoire[Y_sprites])
+        Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_victoire[Y_sprites]}")
         can.itemconfigure(Y_app,image=Y_image)
         can.coords(Y_app,950,500)
         Y_sprites=Y_sprites+1
@@ -42,11 +38,11 @@ def Stage_menu():
     deplmen=0
 
 
-    bg_anim=PhotoImage(file= background_animation[indice_background])
+    bg_anim=PhotoImage(file= f"Interface/{background_animation[indice_background]}")
     imagebg=can.create_image(950,500, image = bg_anim)
-    Selec_image=PhotoImage(file=Selec_stage[indice_stage])
+    Selec_image=PhotoImage(file=f"Interface/{Selec_stage[indice_stage]}")
     image_stage_selec=can.create_image(x_stage,410, image=Selec_image)
-    Menu_image=PhotoImage(file="3_stage_image.png")
+    Menu_image=PhotoImage(file="Interface/3_stage_image.png")
     imagemen=can.create_image(950,500, image = Menu_image)
     background_anim()
     Selec_stage_anim()
@@ -62,17 +58,17 @@ def background_anim():
     global background_anim,bg_anim,imagebg,indice_background,Menu_image,imagemen,verif_select
 
 
-    bg_anim=PhotoImage(file=background_animation[indice_background])
+    bg_anim=PhotoImage(file=f"Interface/{background_animation[indice_background]}")
     can.itemconfigure(imagebg, image = bg_anim)
     indice_background= (indice_background + 1)%4
-    Menu_image=PhotoImage(file="3_stage_image.png")
+    Menu_image=PhotoImage(file="Interface/3_stage_image.png")
     can.itemconfigure(imagemen,image=Menu_image)
 
 
 
 def Selec_stage_anim():
     global Selec_stage, x_stage,indice_stage,Selec_image,image_stage_selec,verif_select
-    Selec_image=PhotoImage(file=Selec_stage[indice_stage])
+    Selec_image=PhotoImage(file=f"Interface/{Selec_stage[indice_stage]}")
     can.itemconfigure(image_stage_selec, image = Selec_image)
     can.coords(image_stage_selec,x_stage,405)
 
@@ -372,12 +368,12 @@ def Vie_et_placement():
         AM_sprites=31
     if YM_sprites>30:
         YM_sprites=31
-    YM_image=PhotoImage(file=sprite_Y_special_meter[YM_sprites])
+    YM_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_special_meter[YM_sprites]}")
     can.itemconfigure(YM_app,image=YM_image)
 
 
 
-    AM_image=PhotoImage(file=sprite_A_special_meter[AM_sprites])
+    AM_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_special_meter[AM_sprites]}")
     can.itemconfigure(AM_app,image=AM_image)
      #######################################################################################     POSITIONNEMENT     #######################################################################################
     if A_posx>Y_posx :
@@ -869,11 +865,7 @@ def JEU(a):
     A_Deplacements()
 
 
-
-
-
     Y_Deplacements()
-
 
 
 
@@ -892,19 +884,19 @@ def JEU(a):
     if x_stage==335:
         le_stage=1
 
-        Stage_image=PhotoImage(file="cathedral.png")
-        mixer.music.load("CATHEDRAL.ogg")
+        Stage_image=PhotoImage(file="Stages/Backgrounds/cathedral.png")
+        mixer.music.load("Stages/Musics/CATHEDRAL.ogg")
 
 
     elif x_stage==953:
         le_stage=2
-        Stage_image=PhotoImage(file="alucard_castle.png")
-        mixer.music.load("CASTLE.ogg")
+        Stage_image=PhotoImage(file="Stages/Backgrounds/alucard_castle.png")
+        mixer.music.load("Stages/Musics/CASTLE.ogg")
 
     elif x_stage==1571:
         le_stage=3
-        Stage_image=PhotoImage(file="temple.png")
-        mixer.music.load("TEMPLE.ogg")
+        Stage_image=PhotoImage(file="Stages/Backgrounds/temple.png")
+        mixer.music.load("Stages/Musics/TEMPLE.ogg")
     Stage_app=can.create_image(position_stage,500, image = Stage_image)
 
 
@@ -919,22 +911,22 @@ def JEU(a):
 
 
 
-    YM_image=PhotoImage(file=sprite_Y_special_meter[YM_sprites])
+    YM_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_special_meter[YM_sprites]}")
     YM_app=can.create_image(83,72,image=YM_image)
 
-    AM_image=PhotoImage(file=sprite_A_special_meter[AM_sprites])
+    AM_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_special_meter[AM_sprites]}")
     AM_app=can.create_image(1817,72,image=AM_image)
 
-    Y_image=PhotoImage(file=sprite_Y_debout[Y_sprites])
+    Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_debout[Y_sprites]}")
     Y_app=can.create_image(Y_posx,Y_posy,image=Y_image)
 
-    A_image_aux=PhotoImage(file=sprite_A_ultime_stand[A_sprites])
+    A_image_aux=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_ultime_stand[A_sprites]}")
     A_app_aux=can.create_image(Aaux_posx,Aaux_posy,image=A_image_aux)
 
-    A_image=PhotoImage(file=sprite_A_debout[A_sprites])
+    A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_debout[A_sprites]}")
     A_app=can.create_image(A_posx,A_posy,image=A_image)
 
-    Y_image_aux=PhotoImage(file=sprite_Y_ultime_explosion[13])
+    Y_image_aux=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_ultime_explosion[13]}")
     Y_app_aux=can.create_image(Yaux_posx,Yaux_posy,image=Y_image_aux)
 
 
@@ -1398,10 +1390,10 @@ def Animation_Alexandre():
         if A_mort==1:
 
             if A_sprites>3:
-                A_image=PhotoImage(file=sprite_A_mort[4])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_mort[4]}")
             else:
 
-                A_image=PhotoImage(file=sprite_A_mort[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_mort[A_sprites]}")
 
 
 
@@ -1415,7 +1407,7 @@ def Animation_Alexandre():
 
             if A_sprites<11:
                 A_posy=A_posy+70
-            A_image=PhotoImage(file=sprite_A_entrée[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_entrée[A_sprites]}")
 
             if A_sprites==29:
                 fen.bind('<KeyPress-q>',A_gauche_lance)
@@ -1435,7 +1427,7 @@ def Animation_Alexandre():
 
         elif A_sortie==1 and A_dispo==1:
             if A_sprites==1:
-                A_bruitages= mixer.Sound("Arire.ogg")
+                A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Avictoire.ogg")
                 A_bruitages.play()
 
             if A_sprites>11:
@@ -1460,11 +1452,7 @@ def Animation_Alexandre():
 
 
             A_posx=A_posx+50
-            A_image=PhotoImage(file=sprite_A_sortie[A_sprites])
-
-
-
-
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_sortie[A_sprites]}")
 
 
 
@@ -1474,14 +1462,14 @@ def Animation_Alexandre():
 
         elif A_subit==1:
             if A_sprites==1:
-                    A_bruitages= mixer.Sound("Asubit1.ogg")
+                    A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Asubit1.ogg")
                     A_bruitages.play()
             A_posx=A_posx+4
 
 
             if A_sprites<5:
 
-                A_image=PhotoImage(file=sprite_A_hit_debout_faible[0])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_hit_debout_faible[0]}")
                 AHUx1=A_posx-70
                 AHUx2=A_posx+60
                 AHUy1=A_posy-150
@@ -1503,16 +1491,17 @@ def Animation_Alexandre():
                 A_dispo=1
                 A_dispo_saut=1
                 A_dispo_frappe=1
+
         elif A_subit==2:
             if A_sprites==1:
-                    A_bruitages= mixer.Sound("Asubit2.ogg")
+                    A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Asubit2.ogg")
                     A_bruitages.play()
             A_posx=A_posx+8
 
 
             if A_sprites<10:
 
-                A_image=PhotoImage(file=sprite_A_hit_debout_puissant[0])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_hit_debout_puissant[0]}")
 
                 AHUx1=A_posx-70
                 AHUx2=A_posx+60
@@ -1539,13 +1528,13 @@ def Animation_Alexandre():
                 A_dispo_frappe=1
         elif A_subit==3:
             if A_sprites==1:
-                    A_bruitages= mixer.Sound("Asubit2.ogg")
+                    A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Asubit2.ogg")
                     A_bruitages.play()
 
 
             if A_sprites<10:
 
-                A_image=PhotoImage(file=sprite_A_ejection_horizontale[0])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_ejection_horizontale[0]}")
 
                 AHUx1=A_posx-70
                 AHUx2=A_posx+60
@@ -1555,7 +1544,7 @@ def Animation_Alexandre():
                 A_posx=A_posx+100
 
             elif Y_stance==666:
-                A_image=PhotoImage(file=sprite_A_ejection_horizontale[0])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_ejection_horizontale[0]}")
 
                 AHUx1=A_posx-70
                 AHUx2=A_posx+60
@@ -1584,19 +1573,19 @@ def Animation_Alexandre():
 
         elif A_subit==4:
             if A_sprites==1:
-                    A_bruitages= mixer.Sound("Asubit2.ogg")
+                    A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Asubit2.ogg")
                     A_bruitages.play()
 
 
             if A_sprites<8:
 
-                A_image=PhotoImage(file=sprite_A_hit_debout_puissant[0])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_hit_debout_puissant[0]}")
                 A_posy=A_posy-70
 
 
                 A_posx=A_posx+25
             elif A_posy<700:
-                A_image=PhotoImage(file=sprite_A_ejection_horizontale[0])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_ejection_horizontale[0]}")
                 A_posy=A_posy+70
                 A_posx=A_posx+25
 
@@ -1632,7 +1621,7 @@ def Animation_Alexandre():
 
         elif A_subit==6:
             if A_sprites==1:
-                    A_bruitages= mixer.Sound("Asubit1.ogg")
+                    A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Asubit1.ogg")
                     A_bruitages.play()
 
 
@@ -1642,7 +1631,7 @@ def Animation_Alexandre():
             if Y_sprites<11:
 
                 A_posx=Y_posx+250
-                A_image=PhotoImage(file=sprite_A_hit_debout_faible[0])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_hit_debout_faible[0]}")
 
                 AHUx1=A_posx-70
                 AHUx2=A_posx+60
@@ -1663,7 +1652,7 @@ def Animation_Alexandre():
             if A_sprites>7:
                 A_sprites=1
 
-            A_image=PhotoImage(file=sprite_A_debout[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_debout[A_sprites]}")
 
             AHUx1=A_posx-70
             AHUx2=A_posx+60
@@ -1675,15 +1664,15 @@ def Animation_Alexandre():
      #######################################################################################     DASH     #######################################################################################
         elif A_stance==55:
             if A_sprites==1:
-                A_bruitages= mixer.Sound("Adash.ogg")
+                A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Adash.ogg")
                 A_bruitages.play()
 
             if A_roulade==4:
                 A_posx=A_posx-45
-                A_image=PhotoImage(file=sprite_A_roulade[0])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_roulade[0]}")
             elif A_roulade==6:
                 A_posx=A_posx+45
-                A_image=PhotoImage(file=sprite_A_roulade_R[0])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_roulade_R[0]}")
 
             if A_sprites==6:
                 A_dispo=1
@@ -1705,7 +1694,7 @@ def Animation_Alexandre():
 
         elif A_stance==54 or A_stance==56:
             if A_sprites==1:
-                A_bruitages= mixer.Sound("Adash.ogg")
+                A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Adash.ogg")
                 A_bruitages.play()
 
             if A_sprites==4:
@@ -1762,11 +1751,11 @@ def Animation_Alexandre():
 
             if A_fort_air==0 and A_leger_air==0 and A_stance==54:
 
-                A_image=PhotoImage(file=sprite_A_dash_avant[0])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_dash_avant[0]}")
             elif A_fort_air==0 and A_leger_air==0 and A_stance==56:
-                A_image=PhotoImage(file=sprite_A_dash_arriere[0])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_dash_arriere[0]}")
             elif A_leger_air==1:
-                A_image=PhotoImage(file=sprite_A_coup_faible_air[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_coup_faible_air[A_sprites]}")
                 if A_sprites==2:
                     AHI1x1=A_posx-225
                     AHI1x2=A_posx-70
@@ -1784,9 +1773,9 @@ def Animation_Alexandre():
                     A_stance=8
                     A_up=0
             elif A_fort_air==1:
-                A_image=PhotoImage(file=sprite_A_coup_puissant_air[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_coup_puissant_air[A_sprites]}")
                 if A_sprites==1:
-                    A_bruitages= mixer.Sound("Adunk.ogg")
+                    A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Adunk.ogg")
                     A_bruitages.play()
                 if A_sprites==3:
                     AHI1x1=A_posx-425
@@ -1832,7 +1821,7 @@ def Animation_Alexandre():
             A_posx=A_posx-35
 
 
-            A_image=PhotoImage(file=sprite_A_marche_avant[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_marche_avant[A_sprites]}")
 
             AHUx1=A_posx-70
             AHUx2=A_posx+60
@@ -1852,7 +1841,7 @@ def Animation_Alexandre():
             A_posx=A_posx+35
 
 
-            A_image=PhotoImage(file=sprite_A_marche_arriere[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_marche_arriere[A_sprites]}")
 
             AHUx1=A_posx-70
             AHUx2=A_posx+60
@@ -1869,7 +1858,7 @@ def Animation_Alexandre():
 
 
 
-            A_image=PhotoImage(file=sprite_A_accroupi[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_accroupi[A_sprites]}")
 
             AHUx1=A_posx-70
             AHUx2=A_posx+60
@@ -1939,7 +1928,7 @@ def Animation_Alexandre():
 
 
                 A_posy=A_posy+100
-                A_image=PhotoImage(file=sprite_A_saut[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_saut[A_sprites]}")
 
                 if A_DPL_D==1:
                     A_dir_saut=6
@@ -1969,7 +1958,7 @@ def Animation_Alexandre():
                 A_dispo_saut=1
                 A_dispo_frappe=1
             if A_subit_air==1:
-                A_image=PhotoImage(file=sprite_A_hit_debout_puissant[0])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_hit_debout_puissant[0]}")
 
 
                 if A_sprites==3:
@@ -1978,7 +1967,7 @@ def Animation_Alexandre():
                     A_subit_air=0
 
             elif A_leger_air==1:
-                A_image=PhotoImage(file=sprite_A_coup_faible_air[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_coup_faible_air[A_sprites]}")
                 if A_sprites==2:
                     AHI1x1=A_posx-225
                     AHI1x2=A_posx-70
@@ -1994,9 +1983,9 @@ def Animation_Alexandre():
                     A_dispo_frappe=1
                     A_leger_air=0
             elif A_fort_air==1:
-                A_image=PhotoImage(file=sprite_A_coup_puissant_air[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_coup_puissant_air[A_sprites]}")
                 if A_sprites==1:
-                    A_bruitages= mixer.Sound("Adunk.ogg")
+                    A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Adunk.ogg")
                     A_bruitages.play()
                 if A_sprites==3:
                     AHI1x1=A_posx-425
@@ -2013,7 +2002,7 @@ def Animation_Alexandre():
                     A_dispo_frappe=1
                     A_fort_air=0
             elif A_leger_air==0 and A_fort_air==0:
-                A_image=PhotoImage(file=sprite_A_saut[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_saut[A_sprites]}")
 
 
             AHUx1=A_posx-70
@@ -2024,7 +2013,7 @@ def Animation_Alexandre():
      #######################################################################################     COUPS FAIBLES DEBOUT     #######################################################################################
         elif A_stance==11:
             if A_sprites==1:
-                A_bruitages= mixer.Sound("Afaible1.ogg")
+                A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Afaible1.ogg")
                 A_bruitages.play()
             if A_sprites==2:
                 AHI1x1=A_posx-125
@@ -2056,7 +2045,7 @@ def Animation_Alexandre():
 
 
 
-            A_image=PhotoImage(file=sprite_A_coup_faible_1[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_coup_faible_1[A_sprites]}")
 
             AHUx1=A_posx-75
             AHUx2=A_posx+60
@@ -2097,7 +2086,7 @@ def Animation_Alexandre():
 
 
 
-            A_image=PhotoImage(file=sprite_A_coup_faible_2[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_coup_faible_2[A_sprites]}")
 
             AHUx1=A_posx-75
             AHUx2=A_posx+60
@@ -2109,7 +2098,7 @@ def Animation_Alexandre():
 
         elif A_stance==13:
             if A_sprites==1:
-                A_bruitages= mixer.Sound("Afaible2.ogg")
+                A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Afaible2.ogg")
                 A_bruitages.play()
                 AHI1x1=A_posx-250
                 AHI1x2=A_posx-30
@@ -2141,7 +2130,7 @@ def Animation_Alexandre():
 
 
 
-            A_image=PhotoImage(file=sprite_A_coup_faible_3[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_coup_faible_3[A_sprites]}")
 
             AHUx1=A_posx-75
             AHUx2=A_posx+60
@@ -2153,7 +2142,7 @@ def Animation_Alexandre():
      #######################################################################################     COUPS PUISSANTS DEBOUT     #######################################################################################
         elif A_stance==14:
             if A_sprites==1:
-                A_bruitages= mixer.Sound("Afort1.ogg")
+                A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Afort1.ogg")
                 A_bruitages.play()
             if A_sprites==3:
                 AHI1x1=A_posx-275
@@ -2187,7 +2176,7 @@ def Animation_Alexandre():
 
 
 
-            A_image=PhotoImage(file=sprite_A_coup_puissant_1[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_coup_puissant_1[A_sprites]}")
 
             AHUx1=A_posx-70
             AHUx2=A_posx+110
@@ -2199,7 +2188,7 @@ def Animation_Alexandre():
 
         elif A_stance==15:
             if A_sprites==1:
-                A_bruitages= mixer.Sound("Afort2.ogg")
+                A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Afort2.ogg")
                 A_bruitages.play()
             if A_sprites==3:
                 AHI1x1=A_posx-300
@@ -2233,7 +2222,7 @@ def Animation_Alexandre():
 
 
 
-            A_image=PhotoImage(file=sprite_A_coup_puissant_2[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_coup_puissant_2[A_sprites]}")
 
             AHUx1=A_posx-70
             AHUx2=A_posx+110
@@ -2245,7 +2234,7 @@ def Animation_Alexandre():
 
         elif A_stance==16:
             if A_sprites==1:
-                A_bruitages= mixer.Sound("Afort3.ogg")
+                A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Afort3.ogg")
                 A_bruitages.play()
 
 
@@ -2282,7 +2271,7 @@ def Animation_Alexandre():
 
 
 
-            A_image=PhotoImage(file=sprite_A_coup_puissant_3[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_coup_puissant_3[A_sprites]}")
 
             AHUx1=A_posx-70
             AHUx2=A_posx+110
@@ -2321,7 +2310,7 @@ def Animation_Alexandre():
 
 
 
-            A_image=PhotoImage(file=sprite_A_projectile[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_projectile[A_sprites]}")
 
             AHUx1=A_posx-70
             AHUx2=A_posx+100
@@ -2365,7 +2354,7 @@ def Animation_Alexandre():
 
 
 
-            A_image=PhotoImage(file=sprite_A_coup_faible_accroupi[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_coup_faible_accroupi[A_sprites]}")
 
             AHUx1=A_posx-70
             AHUx2=A_posx+80
@@ -2378,7 +2367,7 @@ def Animation_Alexandre():
      #######################################################################################     COUP PUISSANT ACCROUPI     #######################################################################################
         elif A_stance==142:
             if A_sprites==1:
-                A_bruitages= mixer.Sound("Asouleve.ogg")
+                A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Asouleve.ogg")
                 A_bruitages.play()
             A_compteur_faible=1
             A_compteur_fort=1
@@ -2412,7 +2401,7 @@ def Animation_Alexandre():
 
 
 
-            A_image=PhotoImage(file=sprite_A_coup_puissant_accroupi[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_coup_puissant_accroupi[A_sprites]}")
 
             AHUx1=A_posx-70
             AHUx2=A_posx+60
@@ -2430,7 +2419,7 @@ def Animation_Alexandre():
 
             if Y_subit!=6 and A_sprites<11:
                 if A_sprites==1:
-                    A_bruitages= mixer.Sound("Agrab.ogg")
+                    A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Agrab.ogg")
                     A_bruitages.play()
 
 
@@ -2469,7 +2458,7 @@ def Animation_Alexandre():
 
 
 
-                A_image=PhotoImage(file=sprite_A_grab[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_grab[A_sprites]}")
 
                 AHUx1=A_posx-70
                 AHUx2=A_posx+110
@@ -2481,7 +2470,7 @@ def Animation_Alexandre():
 
             elif Y_subit==6 or Y_subit==3 and A_stance==666:
                 if A_sprites==1:
-                    A_bruitages= mixer.Sound("AgrabR.ogg")
+                    A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/AgrabR.ogg")
                     A_bruitages.play()
 
 
@@ -2504,7 +2493,7 @@ def Animation_Alexandre():
                     A_dispo_saut=1
                     A_stance=5
 
-                A_image=PhotoImage(file=sprite_A_grab_reussi[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_grab_reussi[A_sprites]}")
 
                 AHUx1=A_posx-70
                 AHUx2=A_posx+110
@@ -2526,7 +2515,7 @@ def Animation_Alexandre():
             if Y_subit!=99 :
                 if A_sprites==1:
 
-                    A_bruitages= mixer.Sound("Astandrush.ogg")
+                    A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Astandrush.ogg")
                     A_bruitages.play()
 
 
@@ -2545,7 +2534,7 @@ def Animation_Alexandre():
                     else:
                         Aaux_posx=(Y_posx+50)
 
-                    A_image_aux=PhotoImage(file=sprite_A_ultime_stand[S_sprites])
+                    A_image_aux=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_ultime_stand[S_sprites]}")
 
 
 
@@ -2560,7 +2549,7 @@ def Animation_Alexandre():
                     S_sprites=1
                     Aaux_posx=A_posx-250
                     Aaux_posy=A_posy
-                    A_image_aux=PhotoImage(file=sprite_A_ultime_stand[S_sprites])
+                    A_image_aux=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_ultime_stand[S_sprites]}")
 
 
 
@@ -2597,7 +2586,7 @@ def Animation_Alexandre():
 
 
 
-                A_image=PhotoImage(file=sprite_A_ultime[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_ultime[A_sprites]}")
 
                 AHUx1=A_posx-70
                 AHUx2=A_posx+110
@@ -2630,7 +2619,7 @@ def Animation_Alexandre():
 
 
                 if A_sprites<21:
-                    A_image_aux=PhotoImage(file=sprite_A_ultime_stand_reussi[S_sprites])
+                    A_image_aux=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_ultime_stand_reussi[S_sprites]}")
 
 
 
@@ -2661,7 +2650,7 @@ def Animation_Alexandre():
                     A_stance=5
                     Y_subit=0
 
-                A_image=PhotoImage(file=sprite_A_ultime_reussi[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_ultime_reussi[A_sprites]}")
 
                 AHUx1=A_posx-70
                 AHUx2=A_posx+110
@@ -2679,7 +2668,7 @@ def Animation_Alexandre():
                 A_posx=A_posx+5
 
 
-                A_image=PhotoImage(file=sprite_A_garde_debout[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_garde_debout[A_sprites]}")
 
                 AHUx1=A_posx-70
                 AHUx2=A_posx+60
@@ -2700,7 +2689,7 @@ def Animation_Alexandre():
                 A_posx=A_posx+5
 
 
-                A_image=PhotoImage(file=sprite_A_garde_accroupi[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_garde_accroupi[A_sprites]}")
 
                 AHUx1=A_posx-70
                 AHUx2=A_posx+60
@@ -2740,10 +2729,10 @@ def Animation_Alexandre():
         if A_mort==1:
 
             if A_sprites>3:
-                A_image=PhotoImage(file=sprite_A_mort_R[4])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_mort_R[4]}")
             else:
 
-                A_image=PhotoImage(file=sprite_A_mort_R[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_mort_R[A_sprites]}")
 
 
         elif A_sortie==1 and A_dispo==1:
@@ -2769,18 +2758,18 @@ def Animation_Alexandre():
 
 
             A_posx=A_posx+50
-            A_image=PhotoImage(file=sprite_A_sortie[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_sortie[A_sprites]}")
      #######################################################################################     DEGATS SUBIS     #######################################################################################
         elif A_subit==1:
             if A_sprites==1:
-                    A_bruitages= mixer.Sound("Asubit1.ogg")
+                    A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Asubit1.ogg")
                     A_bruitages.play()
             A_posx=A_posx-4
 
 
             if A_sprites<5:
 
-                A_image=PhotoImage(file=sprite_A_hit_debout_faible_R[0])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_hit_debout_faible_R[0]}")
 
                 AHUx1=A_posx-60
                 AHUx2=A_posx+70
@@ -2805,14 +2794,14 @@ def Animation_Alexandre():
                 A_dispo_frappe=1
         elif A_subit==2:
             if A_sprites==1:
-                    A_bruitages= mixer.Sound("Asubit2.ogg")
+                    A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Asubit2.ogg")
                     A_bruitages.play()
             A_posx=A_posx-8
 
 
             if A_sprites<10:
 
-                A_image=PhotoImage(file=sprite_A_hit_debout_puissant_R[0])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_hit_debout_puissant_R[0]}")
 
                 AHUx1=A_posx-60
                 AHUx2=A_posx+70
@@ -2838,14 +2827,14 @@ def Animation_Alexandre():
                 A_dispo_frappe=1
         elif A_subit==3:
             if A_sprites==1:
-                    A_bruitages= mixer.Sound("Asubit2.ogg")
+                    A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Asubit2.ogg")
                     A_bruitages.play()
 
 
             if A_sprites<10:
                 print(A_sprites)
 
-                A_image=PhotoImage(file=sprite_A_ejection_horizontale_R[0])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_ejection_horizontale_R[0]}")
 
                 AHUx1=A_posx-60
                 AHUx2=A_posx+70
@@ -2856,7 +2845,7 @@ def Animation_Alexandre():
 
 
             elif Y_stance==666:
-                A_image=PhotoImage(file=sprite_A_ejection_horizontale_R[0])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_ejection_horizontale_R[0]}")
 
                 AHUx1=A_posx-60
                 AHUx2=A_posx+70
@@ -2885,12 +2874,12 @@ def Animation_Alexandre():
 
         elif A_subit==4:
             if A_sprites==1:
-                    A_bruitages= mixer.Sound("Asubit2.ogg")
+                    A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Asubit2.ogg")
                     A_bruitages.play()
 
 
             if A_sprites<8:
-                A_image=PhotoImage(file=sprite_A_hit_debout_puissant_R[0])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_hit_debout_puissant_R[0]}")
 
 
                 A_posy=A_posy-70
@@ -2898,7 +2887,7 @@ def Animation_Alexandre():
 
                 A_posx=A_posx-25
             elif A_posy<700:
-                A_image=PhotoImage(file=sprite_A_ejection_horizontale_R[0])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_ejection_horizontale_R[0]}")
                 A_posy=A_posy+70
                 A_posx=A_posx-25
 
@@ -2933,7 +2922,7 @@ def Animation_Alexandre():
 
         elif A_subit==6:
             if A_sprites==1:
-                    A_bruitages= mixer.Sound("Asubit1.ogg")
+                    A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Asubit1.ogg")
                     A_bruitages.play()
 
 
@@ -2943,7 +2932,7 @@ def Animation_Alexandre():
             if Y_sprites<11:
 
                 A_posx=Y_posx-250
-                A_image=PhotoImage(file=sprite_A_hit_debout_faible_R[0])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_hit_debout_faible_R[0]}")
 
                 AHUx1=A_posx-60
                 AHUx2=A_posx+70
@@ -2962,7 +2951,7 @@ def Animation_Alexandre():
             if A_sprites>7:
                 A_sprites=1
 
-            A_image=PhotoImage(file=sprite_A_debout_R[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_debout_R[A_sprites]}")
 
             AHUx1=A_posx-70
             AHUx2=A_posx+60
@@ -2973,15 +2962,15 @@ def Animation_Alexandre():
      #######################################################################################     DASH     #######################################################################################
         elif A_stance==55:
             if A_sprites==1:
-                A_bruitages= mixer.Sound("Adash.ogg")
+                A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Adash.ogg")
                 A_bruitages.play()
 
             if A_roulade==4:
                 A_posx=A_posx-45
-                A_image=PhotoImage(file=sprite_A_roulade[0])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_roulade[0]}")
             elif A_roulade==6:
                 A_posx=A_posx+45
-                A_image=PhotoImage(file=sprite_A_roulade_R[0])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_roulade_R[0]}")
 
             if A_sprites==6:
                 A_dispo=1
@@ -3003,7 +2992,7 @@ def Animation_Alexandre():
 
         elif A_stance==54 or A_stance==56:
             if A_sprites==1:
-                A_bruitages= mixer.Sound("Adash.ogg")
+                A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Adash.ogg")
                 A_bruitages.play()
 
             if A_sprites==4:
@@ -3060,11 +3049,11 @@ def Animation_Alexandre():
 
             if A_fort_air==0 and A_leger_air==0 and A_stance==54:
 
-                A_image=PhotoImage(file=sprite_A_dash_arriere_R[0])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_dash_arriere_R[0]}")
             elif A_fort_air==0 and A_leger_air==0 and A_stance==56:
-                A_image=PhotoImage(file=sprite_A_dash_avant_R[0])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_dash_avant_R[0]}")
             elif A_leger_air==1:
-                A_image=PhotoImage(file=sprite_A_coup_faible_air_R[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_coup_faible_air_R[A_sprites]}")
                 if A_sprites==2:
                     AHI1x1=A_posx+70
                     AHI1x2=A_posx+225
@@ -3082,9 +3071,9 @@ def Animation_Alexandre():
                     A_stance=8
                     A_up=0
             elif A_fort_air==1:
-                A_image=PhotoImage(file=sprite_A_coup_puissant_air_R[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_coup_puissant_air_R[A_sprites]}")
                 if A_sprites==1:
-                    A_bruitages= mixer.Sound("Adunk.ogg")
+                    A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Adunk.ogg")
                     A_bruitages.play()
                 if A_sprites==3:
                     AHI1x1=A_posx+170
@@ -3126,7 +3115,7 @@ def Animation_Alexandre():
             A_posx=A_posx-35
 
 
-            A_image=PhotoImage(file=sprite_A_marche_avant_R[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_marche_avant_R[A_sprites]}")
 
             AHUx1=A_posx-70
             AHUx2=A_posx+60
@@ -3146,7 +3135,7 @@ def Animation_Alexandre():
             A_posx=A_posx+35
 
 
-            A_image=PhotoImage(file=sprite_A_marche_arriere_R[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_marche_arriere_R[A_sprites]}")
 
             AHUx1=A_posx-70
             AHUx2=A_posx+60
@@ -3163,7 +3152,7 @@ def Animation_Alexandre():
 
 
 
-            A_image=PhotoImage(file=sprite_A_accroupi_R[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_accroupi_R[A_sprites]}")
 
             AHUx1=A_posx-70
             AHUx2=A_posx+60
@@ -3240,7 +3229,7 @@ def Animation_Alexandre():
                 A_compteur_fort=1
 
                 A_posy=A_posy+100
-                A_image=PhotoImage(file=sprite_A_saut_R[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_saut_R[A_sprites]}")
 
                 if A_DPL_D==1:
                     A_dir_saut=6
@@ -3262,7 +3251,7 @@ def Animation_Alexandre():
                 A_dispo_frappe=1
 
             if A_subit_air==1:
-                A_image=PhotoImage(file=sprite_A_hit_debout_puissant_R[0])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_hit_debout_puissant_R[0]}")
 
 
                 if A_sprites==3:
@@ -3271,7 +3260,7 @@ def Animation_Alexandre():
                     A_subit_air=0
 
             elif A_leger_air==1:
-                A_image=PhotoImage(file=sprite_A_coup_faible_air_R[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_coup_faible_air_R[A_sprites]}")
                 if A_sprites==2:
                     AHI1x1=A_posx+70
                     AHI1x2=A_posx+225
@@ -3287,9 +3276,9 @@ def Animation_Alexandre():
                     A_dispo_frappe=1
                     A_leger_air=0
             elif A_fort_air==1:
-                A_image=PhotoImage(file=sprite_A_coup_puissant_air_R[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_coup_puissant_air_R[A_sprites]}")
                 if A_sprites==1:
-                    A_bruitages= mixer.Sound("Adunk.ogg")
+                    A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Adunk.ogg")
                     A_bruitages.play()
                 if A_sprites==3:
                     AHI1x1=A_posx+170
@@ -3306,7 +3295,7 @@ def Animation_Alexandre():
                     A_dispo_frappe=1
                     A_fort_air=0
             elif A_leger_air==0 and A_fort_air==0:
-                A_image=PhotoImage(file=sprite_A_saut_R[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_saut_R[A_sprites]}")
 
 
             AHUx1=A_posx-70
@@ -3317,7 +3306,7 @@ def Animation_Alexandre():
      #######################################################################################     COUPS FAIBLES DEBOUT     #######################################################################################
         elif A_stance==11:
             if A_sprites==1:
-                A_bruitages= mixer.Sound("Afaible1.ogg")
+                A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Afaible1.ogg")
                 A_bruitages.play()
             if A_sprites==2:
                 AHI1x1=A_posx+30
@@ -3351,7 +3340,7 @@ def Animation_Alexandre():
 
 
 
-            A_image=PhotoImage(file=sprite_A_coup_faible_1_R[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_coup_faible_1_R[A_sprites]}")
 
             AHUx1=A_posx-75
             AHUx2=A_posx+60
@@ -3392,7 +3381,7 @@ def Animation_Alexandre():
 
 
 
-            A_image=PhotoImage(file=sprite_A_coup_faible_2_R[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_coup_faible_2_R[A_sprites]}")
 
             AHUx1=A_posx-75
             AHUx2=A_posx+60
@@ -3405,7 +3394,7 @@ def Animation_Alexandre():
         elif A_stance==13:
 
             if A_sprites==1:
-                A_bruitages= mixer.Sound("Afaible2.ogg")
+                A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Afaible2.ogg")
                 A_bruitages.play()
                 AHI1x1=A_posx+30
                 AHI1x2=A_posx+250
@@ -3437,7 +3426,7 @@ def Animation_Alexandre():
 
 
 
-            A_image=PhotoImage(file=sprite_A_coup_faible_3_R[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_coup_faible_3_R[A_sprites]}")
 
             AHUx1=A_posx-75
             AHUx2=A_posx+60
@@ -3449,7 +3438,7 @@ def Animation_Alexandre():
      #######################################################################################     COUPS PUISSANTS DEBOUT     #######################################################################################
         elif A_stance==14:
             if A_sprites==1:
-                A_bruitages= mixer.Sound("Afort1.ogg")
+                A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Afort1.ogg")
                 A_bruitages.play()
             if A_sprites==3:
                 AHI1x1=A_posx+30
@@ -3483,7 +3472,7 @@ def Animation_Alexandre():
 
 
 
-            A_image=PhotoImage(file=sprite_A_coup_puissant_1_R[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_coup_puissant_1_R[A_sprites]}")
 
             AHUx1=A_posx-70
             AHUx2=A_posx+110
@@ -3495,7 +3484,7 @@ def Animation_Alexandre():
 
         elif A_stance==15:
             if A_sprites==1:
-                A_bruitages= mixer.Sound("Afort2.ogg")
+                A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Afort2.ogg")
                 A_bruitages.play()
             if A_sprites==3:
                 AHI1x1=A_posx+30
@@ -3529,7 +3518,7 @@ def Animation_Alexandre():
 
 
 
-            A_image=PhotoImage(file=sprite_A_coup_puissant_2_R[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_coup_puissant_2_R[A_sprites]}")
 
             AHUx1=A_posx-70
             AHUx2=A_posx+110
@@ -3541,7 +3530,7 @@ def Animation_Alexandre():
 
         elif A_stance==16:
             if A_sprites==1:
-                A_bruitages= mixer.Sound("Afort3.ogg")
+                A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Afort3.ogg")
                 A_bruitages.play()
 
 
@@ -3578,7 +3567,7 @@ def Animation_Alexandre():
 
 
 
-            A_image=PhotoImage(file=sprite_A_coup_puissant_3_R[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_coup_puissant_3_R[A_sprites]}")
 
             AHUx1=A_posx-70
             AHUx2=A_posx+110
@@ -3617,7 +3606,7 @@ def Animation_Alexandre():
 
 
 
-            A_image=PhotoImage(file=sprite_A_projectile_R[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_projectile_R[A_sprites]}")
 
             AHUx1=A_posx-70
             AHUx2=A_posx+100
@@ -3661,7 +3650,7 @@ def Animation_Alexandre():
 
 
 
-            A_image=PhotoImage(file=sprite_A_coup_faible_accroupi_R[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_coup_faible_accroupi_R[A_sprites]}")
 
             AHUx1=A_posx-70
             AHUx2=A_posx+80
@@ -3674,7 +3663,7 @@ def Animation_Alexandre():
      #######################################################################################     COUP PUISSANT ACCROUPI     #######################################################################################
         elif A_stance==142:
             if A_sprites==1:
-                A_bruitages= mixer.Sound("Asouleve.ogg")
+                A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Asouleve.ogg")
                 A_bruitages.play()
             A_compteur_faible=1
             A_compteur_fort=1
@@ -3707,7 +3696,7 @@ def Animation_Alexandre():
 
 
 
-            A_image=PhotoImage(file=sprite_A_coup_puissant_accroupi_R[A_sprites])
+            A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_coup_puissant_accroupi_R[A_sprites]}")
 
             AHUx1=A_posx-70
             AHUx2=A_posx+60
@@ -3725,7 +3714,7 @@ def Animation_Alexandre():
 
             if Y_subit!=6 and A_sprites<11:
                 if A_sprites==1:
-                    A_bruitages= mixer.Sound("Agrab.ogg")
+                    A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Agrab.ogg")
                     A_bruitages.play()
 
 
@@ -3763,7 +3752,7 @@ def Animation_Alexandre():
 
 
 
-                A_image=PhotoImage(file=sprite_A_grab_R[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_grab_R[A_sprites]}")
 
                 AHUx1=A_posx-70
                 AHUx2=A_posx+110
@@ -3775,7 +3764,7 @@ def Animation_Alexandre():
 
             elif Y_subit==6 or Y_subit==3 and A_stance==666:
                 if A_sprites==1:
-                    A_bruitages= mixer.Sound("AgrabR.ogg")
+                    A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/AgrabR.ogg")
                     A_bruitages.play()
 
 
@@ -3798,7 +3787,7 @@ def Animation_Alexandre():
                     A_dispo_saut=1
                     A_stance=5
 
-                A_image=PhotoImage(file=sprite_A_grab_reussi_R[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_grab_reussi_R[A_sprites]}")
 
                 AHUx1=A_posx-70
                 AHUx2=A_posx+110
@@ -3834,13 +3823,13 @@ def Animation_Alexandre():
                     else:
                         Aaux_posx=(Y_posx-50)
 
-                    A_image_aux=PhotoImage(file=sprite_A_ultime_stand_R[S_sprites])
+                    A_image_aux=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_ultime_stand_R[S_sprites]}")
 
 
 
                 if A_sprites==5:
 
-                    A_bruitages= mixer.Sound("Astandrush.ogg")
+                    A_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Astandrush.ogg")
                     A_bruitages.play()
                     AHI1x1=Aaux_posx+30
                     AHI1x2=Aaux_posx+200
@@ -3850,7 +3839,7 @@ def Animation_Alexandre():
                     S_sprites=1
                     Aaux_posx=A_posx+250
                     Aaux_posy=A_posy
-                    A_image_aux=PhotoImage(file=sprite_A_ultime_stand_R[S_sprites])
+                    A_image_aux=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_ultime_stand_R[S_sprites]}")
 
 
 
@@ -3887,7 +3876,7 @@ def Animation_Alexandre():
 
 
 
-                A_image=PhotoImage(file=sprite_A_ultime_R[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_ultime_R[A_sprites]}")
 
                 AHUx1=A_posx-70
                 AHUx2=A_posx+110
@@ -3920,7 +3909,7 @@ def Animation_Alexandre():
 
 
                 if A_sprites<21:
-                    A_image_aux=PhotoImage(file=sprite_A_ultime_stand_reussi_R[S_sprites])
+                    A_image_aux=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_ultime_stand_reussi_R[S_sprites]}")
 
 
 
@@ -3953,7 +3942,7 @@ def Animation_Alexandre():
                     if Y_subit!=4:
                         Y_subit=0
 
-                A_image=PhotoImage(file=sprite_A_ultime_reussi_R[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_ultime_reussi_R[A_sprites]}")
 
                 AHUx1=A_posx-70
                 AHUx2=A_posx+110
@@ -3971,7 +3960,7 @@ def Animation_Alexandre():
                 A_posx=A_posx-5
 
 
-                A_image=PhotoImage(file=sprite_A_garde_debout_R[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_garde_debout_R[A_sprites]}")
 
                 AHUx1=A_posx-70
                 AHUx2=A_posx+60
@@ -3992,7 +3981,7 @@ def Animation_Alexandre():
                 A_posx=A_posx-5
 
 
-                A_image=PhotoImage(file=sprite_A_garde_accroupi_R[A_sprites])
+                A_image=PhotoImage(file=f"Characters/Alexandre/Sprites/{sprite_A_garde_accroupi_R[A_sprites]}")
 
                 AHUx1=A_posx-70
                 AHUx2=A_posx+60
@@ -4065,20 +4054,20 @@ def Animation_Yani():
         if Y_mort==1:
 
             if Y_sprites>8:
-                Y_image=PhotoImage(file=sprite_Y_mort_R[9])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_mort_R[9]}")
             else:
 
-                Y_image=PhotoImage(file=sprite_Y_mort_R[Y_sprites])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_mort_R[Y_sprites]}")
 
 
         elif Y_sortie==1 and Y_dispo==1 and A_sprites>20:
             if A_sprites==21:
 
-                Y_bruitages= mixer.Sound("libereatoutjamais.ogg")
+                Y_bruitages= mixer.Sound("Characters/Yani/Sounds/Yvictoire.ogg")
                 Y_bruitages.play()
 
 
-            Y_image=PhotoImage(file=sprite_Y_sortie[3])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_sortie[3]}")
             Y_posx=Y_posx+100
             Y_posy=Y_posy-100
 
@@ -4094,13 +4083,13 @@ def Animation_Yani():
         elif Y_subit==1:
             Y_posx=Y_posx+4
             if Y_sprites==1:
-                Y_bruitages= mixer.Sound("Ysubitfaible.ogg")
+                Y_bruitages= mixer.Sound("Characters/Yani/Sounds/Ysubitfaible.ogg")
                 Y_bruitages.play()
 
 
             if Y_sprites<5:
 
-                Y_image=PhotoImage(file=sprite_Y_hit_debout_faible_R[0])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_hit_debout_faible_R[0]}")
 
                 YHUx1=Y_posx-70
                 YHUx2=Y_posx+60
@@ -4126,12 +4115,12 @@ def Animation_Yani():
         elif Y_subit==2:
             Y_posx=Y_posx+8
             if Y_sprites==1:
-                Y_bruitages= mixer.Sound("Ysubitlourd.ogg")
+                Y_bruitages= mixer.Sound("Characters/Yani/Sounds/Ysubitlourd.ogg")
                 Y_bruitages.play()
 
 
             if Y_sprites<10:
-                Y_image=PhotoImage(file=sprite_Y_hit_debout_puissant_R[0])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_hit_debout_puissant_R[0]}")
 
                 YHUx1=Y_posx-70
                 YHUx2=Y_posx+60
@@ -4163,7 +4152,7 @@ def Animation_Yani():
 
             if Y_sprites<10:
 
-                Y_image=PhotoImage(file=sprite_Y_ejection_horizontale_R[0])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_ejection_horizontale_R[0]}")
 
                 YHUx1=Y_posx-70
                 YHUx2=Y_posx+60
@@ -4174,7 +4163,7 @@ def Animation_Yani():
 
 
             elif A_stance==666:
-                Y_image=PhotoImage(file=sprite_Y_ejection_horizontale_R[0])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_ejection_horizontale_R[0]}")
 
                 YHUx1=Y_posx-70
                 YHUx2=Y_posx+60
@@ -4204,12 +4193,12 @@ def Animation_Yani():
         elif Y_subit==4:
             A_dispo_soulevement=0
             if Y_sprites==1:
-                Y_bruitages= mixer.Sound("Ysubitlourd.ogg")
+                Y_bruitages= mixer.Sound("Characters/Yani/Sounds/Ysubitlourd.ogg")
                 Y_bruitages.play()
 
 
             if Y_sprites<8:
-                Y_image=PhotoImage(file=sprite_Y_hit_debout_puissant_R[0])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_hit_debout_puissant_R[0]}")
 
 
                 Y_posy=Y_posy-70
@@ -4217,7 +4206,7 @@ def Animation_Yani():
 
                 Y_posx=Y_posx+25
             elif Y_posy<700:
-                Y_image=PhotoImage(file=sprite_Y_ejection_horizontale_R[0])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_ejection_horizontale_R[0]}")
                 Y_posy=Y_posy+70
                 Y_posx=Y_posx+25
 
@@ -4254,7 +4243,7 @@ def Animation_Yani():
 
         elif Y_subit==6:
             if Y_sprites==1:
-                Y_bruitages= mixer.Sound("Ysubitfaible.ogg")
+                Y_bruitages= mixer.Sound("Characters/Yani/Sounds/Ysubitfaible.ogg")
                 Y_bruitages.play()
 
 
@@ -4264,7 +4253,7 @@ def Animation_Yani():
             if A_sprites<11:
 
                 Y_posx=A_posx+250
-                Y_image=PhotoImage(file=sprite_Y_hit_debout_faible_R[0])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_hit_debout_faible_R[0]}")
 
                 YHUx1=Y_posx-70
                 YHUx2=Y_posx+60
@@ -4281,9 +4270,9 @@ def Animation_Yani():
         elif Y_subit==99:
 
             if A_sprites<6:
-                Y_image=PhotoImage(file=sprite_Y_hit_debout_faible_R[0])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_hit_debout_faible_R[0]}")
             else:
-                Y_image=PhotoImage(file=sprite_Y_mort_R[1])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_mort_R[1]}")
 
 
 
@@ -4295,7 +4284,7 @@ def Animation_Yani():
             if Y_sprites>7:
                 Y_sprites=1
 
-            Y_image=PhotoImage(file=sprite_Y_debout_R[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_debout_R[Y_sprites]}")
 
             YHUx1=Y_posx-70
             YHUx2=Y_posx+60
@@ -4309,10 +4298,10 @@ def Animation_Yani():
 
             if Y_roulade==4:
                 Y_posx=Y_posx-45
-                Y_image=PhotoImage(file=sprite_Y_roulade_R[0])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_roulade_R[0]}")
             elif Y_roulade==6:
                 Y_posx=Y_posx+45
-                Y_image=PhotoImage(file=sprite_Y_roulade[0])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_roulade[0]}")
 
             if Y_sprites==6:
                 Y_dispo=1
@@ -4388,11 +4377,11 @@ def Animation_Yani():
 
             if Y_fort_air==0 and Y_leger_air==0 and Y_stance==54:
 
-                Y_image=PhotoImage(file=sprite_Y_dash_avant_R[0])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_dash_avant_R[0]}")
             elif Y_fort_air==0 and Y_leger_air==0 and Y_stance==56:
-                Y_image=PhotoImage(file=sprite_Y_dash_arriere_R[0])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_dash_arriere_R[0]}")
             elif Y_leger_air==1:
-                Y_image=PhotoImage(file=sprite_Y_coup_faible_air_R[Y_sprites])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_coup_faible_air_R[Y_sprites]}")
                 if Y_sprites==2:
                     YHI1x1=Y_posx-150
                     YHI1x2=Y_posx-50
@@ -4410,7 +4399,7 @@ def Animation_Yani():
                     Y_stance=8
                     Y_up=0
             elif Y_fort_air==1:
-                Y_image=PhotoImage(file=sprite_Y_coup_puissant_air_R[Y_sprites])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_coup_puissant_air_R[Y_sprites]}")
                 if Y_sprites==3:
                     YHI1x1=Y_posx-250
                     YHI1x2=Y_posx-10
@@ -4456,7 +4445,7 @@ def Animation_Yani():
             Y_posx=Y_posx-35
 
 
-            Y_image=PhotoImage(file=sprite_Y_marche_avant_R[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_marche_avant_R[Y_sprites]}")
 
             YHUx1=Y_posx-70
             YHUx2=Y_posx+60
@@ -4476,7 +4465,7 @@ def Animation_Yani():
             Y_posx=Y_posx+35
 
 
-            Y_image=PhotoImage(file=sprite_Y_marche_arriere_R[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_marche_arriere_R[Y_sprites]}")
 
             YHUx1=Y_posx-70
             YHUx2=Y_posx+60
@@ -4493,7 +4482,7 @@ def Animation_Yani():
 
 
 
-            Y_image=PhotoImage(file=sprite_Y_accroupi_R[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_accroupi_R[Y_sprites]}")
 
             YHUx1=Y_posx-70
             YHUx2=Y_posx+60
@@ -4566,7 +4555,7 @@ def Animation_Yani():
                 Y_compteur_fort=1
 
                 Y_posy=Y_posy+100
-                Y_image=PhotoImage(file=sprite_Y_saut_R[Y_sprites])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_saut_R[Y_sprites]}")
 
                 if Y_DPL_D==1:
                     Y_dir_saut=6
@@ -4588,7 +4577,7 @@ def Animation_Yani():
                 Y_dispo_frappe=1
 
             if Y_subit_air==1:
-                Y_image=PhotoImage(file=sprite_Y_hit_debout_puissant_R[0])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_hit_debout_puissant_R[0]}")
 
 
                 if Y_sprites==3:
@@ -4597,7 +4586,7 @@ def Animation_Yani():
                     Y_subit_air=0
 
             elif Y_leger_air==1:
-                Y_image=PhotoImage(file=sprite_Y_coup_faible_air_R[Y_sprites])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_coup_faible_air_R[Y_sprites]}")
                 if Y_sprites==2:
                     YHI1x1=Y_posx-150
                     YHI1x2=Y_posx-50
@@ -4613,7 +4602,7 @@ def Animation_Yani():
                     Y_dispo_frappe=1
                     Y_leger_air=0
             elif Y_fort_air==1:
-                Y_image=PhotoImage(file=sprite_Y_coup_puissant_air_R[Y_sprites])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_coup_puissant_air_R[Y_sprites]}")
                 if Y_sprites==3:
                     YHI1x1=Y_posx-250
                     YHI1x2=Y_posx-10
@@ -4629,7 +4618,7 @@ def Animation_Yani():
                     Y_dispo_frappe=1
                     Y_fort_air=0
             elif Y_leger_air==0 and Y_fort_air==0:
-                Y_image=PhotoImage(file=sprite_Y_saut_R[Y_sprites])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_saut_R[Y_sprites]}")
 
 
             YHUx1=Y_posx-70
@@ -4642,7 +4631,7 @@ def Animation_Yani():
         elif Y_stance==11:
             if Y_sprites==2:
 
-                Y_bruitages= mixer.Sound("Ycoupfaible1.ogg")
+                Y_bruitages= mixer.Sound("Characters/Yani/Sounds/Ycoupfaible1.ogg")
                 Y_bruitages.play()
                 YHI1x1=Y_posx-160
                 YHI1x2=Y_posx-65
@@ -4671,7 +4660,7 @@ def Animation_Yani():
 
 
 
-            Y_image=PhotoImage(file=sprite_Y_coup_faible_1_R[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_coup_faible_1_R[Y_sprites]}")
 
             YHUx1=Y_posx-75
             YHUx2=Y_posx+60
@@ -4683,7 +4672,7 @@ def Animation_Yani():
 
         elif Y_stance==12:
             if Y_sprites==2:
-                Y_bruitages= mixer.Sound("coupdepiedausol.ogg")
+                Y_bruitages= mixer.Sound("Characters/Yani/Sounds/Ycoupdepiedausol.ogg")
                 Y_bruitages.play()
                 YHI1x1=Y_posx-250
                 YHI1x2=Y_posx-30
@@ -4712,7 +4701,7 @@ def Animation_Yani():
 
 
 
-            Y_image=PhotoImage(file=sprite_Y_coup_faible_2_R[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_coup_faible_2_R[Y_sprites]}")
 
             YHUx1=Y_posx-75
             YHUx2=Y_posx+60
@@ -4752,7 +4741,7 @@ def Animation_Yani():
 
 
 
-            Y_image=PhotoImage(file=sprite_Y_coup_faible_3_R[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_coup_faible_3_R[Y_sprites]}")
 
             YHUx1=Y_posx-75
             YHUx2=Y_posx+60
@@ -4793,7 +4782,7 @@ def Animation_Yani():
 
 
 
-            Y_image=PhotoImage(file=sprite_Y_coup_puissant_1_R[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_coup_puissant_1_R[Y_sprites]}")
 
             YHUx1=Y_posx-70
             YHUx2=Y_posx+110
@@ -4851,7 +4840,7 @@ def Animation_Yani():
 
 
 
-            Y_image=PhotoImage(file=sprite_Y_coup_puissant_2_R[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_coup_puissant_2_R[Y_sprites]}")
 
             YHUx1=Y_posx-70
             YHUx2=Y_posx+110
@@ -4893,7 +4882,7 @@ def Animation_Yani():
 
 
 
-            Y_image=PhotoImage(file=sprite_Y_projectile_R[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_projectile_R[Y_sprites]}")
 
             YHUx1=Y_posx-70
             YHUx2=Y_posx+100
@@ -4932,7 +4921,7 @@ def Animation_Yani():
 
 
 
-            Y_image=PhotoImage(file=sprite_Y_coup_faible_accroupi_R[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_coup_faible_accroupi_R[Y_sprites]}")
 
             YHUx1=Y_posx-70
             YHUx2=Y_posx+80
@@ -4975,7 +4964,7 @@ def Animation_Yani():
 
 
 
-            Y_image=PhotoImage(file=sprite_Y_coup_puissant_accroupi_R[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_coup_puissant_accroupi_R[Y_sprites]}")
 
             YHUx1=Y_posx-70
             YHUx2=Y_posx+60
@@ -5028,7 +5017,7 @@ def Animation_Yani():
 
 
 
-                Y_image=PhotoImage(file=sprite_Y_grab_R[Y_sprites])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_grab_R[Y_sprites]}")
 
                 YHUx1=Y_posx-70
                 YHUx2=Y_posx+110
@@ -5060,7 +5049,7 @@ def Animation_Yani():
                     Y_dispo_saut=1
                     Y_stance=5
 
-                Y_image=PhotoImage(file=sprite_Y_grab_reussi_R[Y_sprites])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_grab_reussi_R[Y_sprites]}")
 
                 YHUx1=Y_posx-70
                 YHUx2=Y_posx+110
@@ -5077,10 +5066,10 @@ def Animation_Yani():
 
         elif Y_stance==99:
             if Y_sprites==1:
-                Y_bruitages= mixer.Sound("Yepekaye.ogg")
+                Y_bruitages= mixer.Sound("Characters/Yani/Sounds/Yepekaye.ogg")
                 Y_bruitages.play()
-            Y_image_aux=PhotoImage(file=sprite_Y_ultime_explosion[Y_sprites])
-            Y_image=PhotoImage(file=sprite_Y_ultime_R[Y_sprites])
+            Y_image_aux=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_ultime_explosion[Y_sprites]}")
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_ultime_R[Y_sprites]}")
 
             if Y_sprites==8:
                 YHI1x1=Y_posx-400
@@ -5131,7 +5120,7 @@ def Animation_Yani():
                 Y_posx=Y_posx+5
 
 
-                Y_image=PhotoImage(file=sprite_Y_garde_debout_R[Y_sprites])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_garde_debout_R[Y_sprites]}")
 
                 YHUx1=Y_posx-70
                 YHUx2=Y_posx+60
@@ -5152,7 +5141,7 @@ def Animation_Yani():
                 Y_posx=Y_posx+5
 
 
-                Y_image=PhotoImage(file=sprite_Y_garde_accroupi_R[Y_sprites])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_garde_accroupi_R[Y_sprites]}")
 
                 YHUx1=Y_posx-70
                 YHUx2=Y_posx+60
@@ -5170,42 +5159,25 @@ def Animation_Yani():
 
 
 
-
-
-
-
-
-
-
-
      #######################################################################################     POSITION 2     #######################################################################################
-
-
-
-
-
-
 
 
 
     elif agencement==1:
 
-
-
-
         if Y_mort==1:
 
             if Y_sprites>8:
-                Y_image=PhotoImage(file=sprite_Y_mort[9])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_mort[9]}")
             else:
 
-                Y_image=PhotoImage(file=sprite_Y_mort[Y_sprites])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_mort[Y_sprites]}")
 
      #######################################################################################     DEGATS SUBIS     #######################################################################################
         elif depart==1:
 
 
-            Y_image=PhotoImage(file=sprite_Y_entrée[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_entrée[Y_sprites]}")
 
             if Y_sprites==29:
 
@@ -5228,24 +5200,24 @@ def Animation_Yani():
 
         elif Y_sortie==1 and Y_dispo==1 and A_sprites>20:
             if A_sprites==21:
-                Y_bruitages= mixer.Sound("libereatoutjamais.ogg")
+                Y_bruitages= mixer.Sound("Characters/Yani/Sounds/Yvictoire.ogg")
                 Y_bruitages.play()
 
 
-            Y_image=PhotoImage(file=sprite_Y_sortie[3])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_sortie[3]}")
             Y_posx=Y_posx+100
             Y_posy=Y_posy-100
 
         elif Y_subit==1:
             Y_posx=Y_posx-4
             if Y_sprites==1:
-                Y_bruitages= mixer.Sound("Ysubitfaible.ogg")
+                Y_bruitages= mixer.Sound("Characters/Yani/Sounds/Ysubitfaible.ogg")
                 Y_bruitages.play()
 
 
             if Y_sprites<5:
 
-                Y_image=PhotoImage(file=sprite_Y_hit_debout_faible[0])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_hit_debout_faible[0]}")
 
                 YHUx1=Y_posx-60
                 YHUx2=Y_posx+70
@@ -5272,12 +5244,12 @@ def Animation_Yani():
 
             Y_posx=Y_posx-8
             if Y_sprites==1:
-                Y_bruitages= mixer.Sound("Ysubitlourd.ogg")
+                Y_bruitages= mixer.Sound("Characters/Yani/Sounds/Ysubitlourd.ogg")
                 Y_bruitages.play()
 
             if Y_sprites<10:
 
-                Y_image=PhotoImage(file=sprite_Y_hit_debout_puissant[0])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_hit_debout_puissant[0]}")
 
                 YHUx1=Y_posx-60
                 YHUx2=Y_posx+70
@@ -5303,13 +5275,13 @@ def Animation_Yani():
                 Y_dispo_frappe=1
         elif Y_subit==3:
             if Y_sprites==1:
-                Y_bruitages= mixer.Sound("ejecte.ogg")
+                Y_bruitages= mixer.Sound("Characters/Yani/Sounds/Yejecte.ogg")
                 Y_bruitages.play()
 
 
             if Y_sprites<10:
 
-                Y_image=PhotoImage(file=sprite_Y_ejection_horizontale[0])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_ejection_horizontale[0]}")
 
                 YHUx1=Y_posx-70
                 YHUx2=Y_posx+60
@@ -5320,7 +5292,7 @@ def Animation_Yani():
 
 
             elif A_stance==666:
-                Y_image=PhotoImage(file=sprite_Y_ejection_horizontale[0])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_ejection_horizontale[0]}")
 
                 YHUx1=Y_posx-70
                 YHUx2=Y_posx+60
@@ -5350,12 +5322,12 @@ def Animation_Yani():
         elif Y_subit==4:
             A_dispo_soulevement=0
             if Y_sprites==1:
-                Y_bruitages= mixer.Sound("Ysubitlourd.ogg")
+                Y_bruitages= mixer.Sound("Characters/Yani/Sounds/Ysubitlourd.ogg")
                 Y_bruitages.play()
 
 
             if Y_sprites<8:
-                Y_image=PhotoImage(file=sprite_Y_hit_debout_puissant[0])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_hit_debout_puissant[0]}")
 
 
                 Y_posy=Y_posy-70
@@ -5363,7 +5335,7 @@ def Animation_Yani():
 
                 Y_posx=Y_posx-25
             elif Y_posy<700:
-                Y_image=PhotoImage(file=sprite_Y_ejection_horizontale[0])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_ejection_horizontale[0]}")
                 Y_posy=Y_posy+70
                 Y_posx=Y_posx-25
 
@@ -5400,7 +5372,7 @@ def Animation_Yani():
 
         elif Y_subit==6:
             if Y_sprites==1:
-                Y_bruitages= mixer.Sound("Ysubitfaible.ogg")
+                Y_bruitages= mixer.Sound("Characters/Yani/Sounds/Ysubitfaible.ogg")
                 Y_bruitages.play()
 
 
@@ -5410,7 +5382,7 @@ def Animation_Yani():
             if A_sprites<11:
 
                 Y_posx=A_posx-250
-                Y_image=PhotoImage(file=sprite_Y_hit_debout_faible[0])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_hit_debout_faible[0]}")
 
                 YHUx1=Y_posx-70
                 YHUx2=Y_posx+60
@@ -5427,13 +5399,13 @@ def Animation_Yani():
 
         elif Y_subit==99:
             if A_sprites<6:
-                Y_image=PhotoImage(file=sprite_Y_hit_debout_faible[0])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_hit_debout_faible[0]}")
             elif A_sprites==6:
                 Y_posx=Y_posx-50
-                Y_image=PhotoImage(file=sprite_Y_mort[1])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_mort[1]}")
             else:
 
-                Y_image=PhotoImage(file=sprite_Y_mort[1])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_mort[1]}")
 
 
 
@@ -5442,7 +5414,7 @@ def Animation_Yani():
             if Y_sprites>7:
                 Y_sprites=1
 
-            Y_image=PhotoImage(file=sprite_Y_debout[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_debout[Y_sprites]}")
 
             YHUx1=Y_posx-70
             YHUx2=Y_posx+60
@@ -5456,10 +5428,10 @@ def Animation_Yani():
 
             if Y_roulade==4:
                 Y_posx=Y_posx-45
-                Y_image=PhotoImage(file=sprite_Y_roulade_R[0])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_roulade_R[0]}")
             elif Y_roulade==6:
                 Y_posx=Y_posx+45
-                Y_image=PhotoImage(file=sprite_Y_roulade[0])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_roulade[0]}")
 
             if Y_sprites==6:
                 Y_dispo=1
@@ -5521,9 +5493,7 @@ def Animation_Yani():
 
             if Y_stance==54:
                 Y_posx=Y_posx-100
-
                 Y_dir_saut=4
-
 
             elif Y_stance==56:
                 Y_posx=Y_posx+100
@@ -5531,14 +5501,14 @@ def Animation_Yani():
 
 
 
-
             if Y_fort_air==0 and Y_leger_air==0 and Y_stance==54:
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_dash_arriere[0]}")
 
-                Y_image=PhotoImage(file=sprite_Y_dash_arriere[0])
             elif Y_fort_air==0 and Y_leger_air==0 and Y_stance==56:
-                Y_image=PhotoImage(file=sprite_Y_dash_avant[0])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_dash_avant[0]}")
+
             elif Y_leger_air==1:
-                Y_image=PhotoImage(file=sprite_Y_coup_faible_air[Y_sprites])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_coup_faible_air[Y_sprites]}")
                 if Y_sprites==2:
 
                     YHI1x1=Y_posx+50
@@ -5556,8 +5526,9 @@ def Animation_Yani():
                     Y_leger_air=0
                     Y_stance=8
                     Y_up=0
+
             elif Y_fort_air==1:
-                Y_image=PhotoImage(file=sprite_Y_coup_puissant_air[Y_sprites])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_coup_puissant_air[Y_sprites]}")
                 if Y_sprites==3:
                     YHI1x1=Y_posx+10
                     YHI1x2=Y_posx+250
@@ -5603,7 +5574,7 @@ def Animation_Yani():
             Y_posx=Y_posx-35
 
 
-            Y_image=PhotoImage(file=sprite_Y_marche_arriere[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_marche_arriere[Y_sprites]}")
 
             YHUx1=Y_posx-70
             YHUx2=Y_posx+60
@@ -5623,7 +5594,7 @@ def Animation_Yani():
             Y_posx=Y_posx+35
 
 
-            Y_image=PhotoImage(file=sprite_Y_marche_avant[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_marche_avant[Y_sprites]}")
 
             YHUx1=Y_posx-70
             YHUx2=Y_posx+60
@@ -5640,7 +5611,7 @@ def Animation_Yani():
 
 
 
-            Y_image=PhotoImage(file=sprite_Y_accroupi[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_accroupi[Y_sprites]}")
 
             YHUx1=Y_posx-70
             YHUx2=Y_posx+60
@@ -5712,7 +5683,7 @@ def Animation_Yani():
                 Y_compteur_fort=1
 
                 Y_posy=Y_posy+100
-                Y_image=PhotoImage(file=sprite_Y_saut[Y_sprites])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_saut[Y_sprites]}")
 
                 if Y_DPL_D==1:
                     Y_dir_saut=6
@@ -5732,17 +5703,16 @@ def Animation_Yani():
                 Y_dispo=1
                 Y_dispo_saut=1
                 Y_dispo_frappe=1
-            if Y_subit_air==1:
-                Y_image=PhotoImage(file=sprite_Y_hit_debout_puissant[0])
 
+            if Y_subit_air==1:
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_hit_debout_puissant[0]}")
 
                 if Y_sprites==3:
-
 
                     Y_subit_air=0
 
             elif Y_leger_air==1:
-                Y_image=PhotoImage(file=sprite_Y_coup_faible_air[Y_sprites])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_coup_faible_air[Y_sprites]}")
                 if Y_sprites==2:
                     YHI1x1=Y_posx+50
                     YHI1x2=Y_posx+150
@@ -5758,7 +5728,7 @@ def Animation_Yani():
                     Y_dispo_frappe=1
                     Y_leger_air=0
             elif Y_fort_air==1:
-                Y_image=PhotoImage(file=sprite_Y_coup_puissant_air[Y_sprites])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_coup_puissant_air[Y_sprites]}")
                 if Y_sprites==3:
                     YHI1x1=Y_posx+10
                     YHI1x2=Y_posx+250
@@ -5774,7 +5744,7 @@ def Animation_Yani():
                     Y_dispo_frappe=1
                     Y_fort_air=0
             elif Y_leger_air==0 and Y_fort_air==0:
-                Y_image=PhotoImage(file=sprite_Y_saut[Y_sprites])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_saut[Y_sprites]}")
 
 
             YHUx1=Y_posx-70
@@ -5786,7 +5756,7 @@ def Animation_Yani():
      #######################################################################################     COUPS FYIBLES DEBOUT     #######################################################################################
         elif Y_stance==11:
             if Y_sprites==2:
-                Y_bruitages= mixer.Sound("Ycoupfaible1.ogg")
+                Y_bruitages= mixer.Sound("Characters/Yani/Sounds/Ycoupfaible1.ogg")
                 Y_bruitages.play()
                 YHI1x1=Y_posx+65
                 YHI1x2=Y_posx+160
@@ -5813,9 +5783,7 @@ def Animation_Yani():
 
 
 
-
-
-            Y_image=PhotoImage(file=sprite_Y_coup_faible_1[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_coup_faible_1[Y_sprites]}")
 
             YHUx1=Y_posx-75
             YHUx2=Y_posx+60
@@ -5827,7 +5795,7 @@ def Animation_Yani():
 
         elif Y_stance==12:
             if Y_sprites==2:
-                Y_bruitages= mixer.Sound("coupdepiedausol.ogg")
+                Y_bruitages= mixer.Sound("Characters/Yani/Sounds/Ycoupdepiedausol.ogg")
                 Y_bruitages.play()
 
                 YHI1x1=Y_posx+30
@@ -5857,7 +5825,7 @@ def Animation_Yani():
 
 
 
-            Y_image=PhotoImage(file=sprite_Y_coup_faible_2[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_coup_faible_2[Y_sprites]}")
 
             YHUx1=Y_posx-75
             YHUx2=Y_posx+60
@@ -5897,7 +5865,7 @@ def Animation_Yani():
 
 
 
-            Y_image=PhotoImage(file=sprite_Y_coup_faible_3[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_coup_faible_3[Y_sprites]}")
 
             YHUx1=Y_posx-75
             YHUx2=Y_posx+60
@@ -5939,7 +5907,7 @@ def Animation_Yani():
 
 
 
-            Y_image=PhotoImage(file=sprite_Y_coup_puissant_1[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_coup_puissant_1[Y_sprites]}")
 
             YHUx1=Y_posx-70
             YHUx2=Y_posx+110
@@ -5997,7 +5965,7 @@ def Animation_Yani():
 
 
 
-            Y_image=PhotoImage(file=sprite_Y_coup_puissant_2[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_coup_puissant_2[Y_sprites]}")
 
             YHUx1=Y_posx-70
             YHUx2=Y_posx+110
@@ -6036,7 +6004,7 @@ def Animation_Yani():
 
 
 
-            Y_image=PhotoImage(file=sprite_Y_projectile[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_projectile[Y_sprites]}")
 
             YHUx1=Y_posx-70
             YHUx2=Y_posx+100
@@ -6075,7 +6043,7 @@ def Animation_Yani():
 
 
 
-            Y_image=PhotoImage(file=sprite_Y_coup_faible_accroupi[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_coup_faible_accroupi[Y_sprites]}")
 
             YHUx1=Y_posx-70
             YHUx2=Y_posx+80
@@ -6118,7 +6086,7 @@ def Animation_Yani():
 
 
 
-            Y_image=PhotoImage(file=sprite_Y_coup_puissant_accroupi[Y_sprites])
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_coup_puissant_accroupi[Y_sprites]}")
 
             YHUx1=Y_posx-70
             YHUx2=Y_posx+60
@@ -6172,7 +6140,7 @@ def Animation_Yani():
 
 
 
-                Y_image=PhotoImage(file=sprite_Y_grab[Y_sprites])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_grab[Y_sprites]}")
 
                 YHUx1=Y_posx-70
                 YHUx2=Y_posx+110
@@ -6204,7 +6172,7 @@ def Animation_Yani():
                     Y_dispo_saut=1
                     Y_stance=5
 
-                Y_image=PhotoImage(file=sprite_Y_grab_reussi[Y_sprites])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_grab_reussi[Y_sprites]}")
 
                 YHUx1=Y_posx-70
                 YHUx2=Y_posx+110
@@ -6217,10 +6185,10 @@ def Animation_Yani():
 
         elif Y_stance==99:
             if Y_sprites==1:
-                Y_bruitages= mixer.Sound("Yepekaye.ogg")
+                Y_bruitages= mixer.Sound("Characters/Yani/Sounds/Yepekaye.ogg")
                 Y_bruitages.play()
-            Y_image_aux=PhotoImage(file=sprite_Y_ultime_explosion[Y_sprites])
-            Y_image=PhotoImage(file=sprite_Y_ultime[Y_sprites])
+            Y_image_aux=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_ultime_explosion[Y_sprites]}")
+            Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_ultime[Y_sprites]}")
 
             if Y_sprites==8:
                 YHI1x1=Y_posx+30
@@ -6269,7 +6237,7 @@ def Animation_Yani():
                 Y_posx=Y_posx-5
 
 
-                Y_image=PhotoImage(file=sprite_Y_garde_debout[Y_sprites])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_garde_debout[Y_sprites]}")
 
                 YHUx1=Y_posx-70
                 YHUx2=Y_posx+60
@@ -6290,7 +6258,7 @@ def Animation_Yani():
                 Y_posx=Y_posx-5
 
 
-                Y_image=PhotoImage(file=sprite_Y_garde_accroupi[Y_sprites])
+                Y_image=PhotoImage(file=f"Characters/Yani/Sprites/{sprite_Y_garde_accroupi[Y_sprites]}")
 
                 YHUx1=Y_posx-70
                 YHUx2=Y_posx+60
@@ -6305,13 +6273,6 @@ def Animation_Yani():
                 Y_dispo=1
                 Y_dispo_frappe=1
                 Y_dispo_saut=1
-
-
-
-
-
-
-
 
 
     if Y_compteur_roulade>9:
@@ -6334,17 +6295,11 @@ def Animation_Yani():
 
 
 
-
-
-
-
-
-
 def Menu():
     global Selec_menu, indice_menu,deplmen,image, Menu_image,Menurun,sub_menu,verif_select
     indice_menu=0
     verif_select=0
-    Menu_image=PhotoImage(file=Selec_Menu[indice_menu])
+    Menu_image = PhotoImage(file=f"Interface/{Selec_Menu[indice_menu]}")
     image=can.create_image(950,500, image=Menu_image)
 
     lance_menu(1)
@@ -6389,7 +6344,7 @@ def Menu_anim():
         deplmen=0
 
 
-    Menu_image=PhotoImage(file=Selec_Menu[indice_menu])
+    Menu_image = PhotoImage(file=f"Interface/{Selec_Menu[indice_menu]}")
     can.itemconfigure(image,image=Menu_image)
     if Menurun==1:
         fen.after(1,Menu_anim)
@@ -6398,18 +6353,18 @@ def Menu_anim():
         verif_select=1
         indice_transition=0
         Transition_menu()
-        mixer.music.load("STAGESELECT.ogg")
+        mixer.music.load("Interface/Sounds/STAGESELECT.ogg")
         mixer.music.play()
     elif indice_menu==3:
         mixer.music.stop()
         Quitter()
     elif indice_menu==6:
         Credits()
-        mixer.music.load("CREDITS.ogg")
+        mixer.music.load("Interface/Sounds/CREDITS.ogg")
         mixer.music.play()
     elif indice_menu==9:
         Commandes()
-        mixer.music.load("CREDITS.ogg")
+        mixer.music.load("Interface/Sounds/CREDITS.ogg")
         mixer.music.play()
 
 
@@ -6422,7 +6377,7 @@ def Transition_menu():
         Stage_menu()
     else:
         indice_transition = indice_transition+1
-        Menu_image=PhotoImage(file=Transition[indice_transition])
+        Menu_image=PhotoImage(file=f"Interface/{Transition[indice_transition]}")
         can.itemconfigure(image,image=Menu_image)
         fen.after(60, Transition_menu)
 
@@ -6432,7 +6387,7 @@ def Credits():
     global image,text,sub_menu,Menu_image
     fen.unbind('k')
 
-    Menu_image=PhotoImage(file="CREDITS.png")
+    Menu_image=PhotoImage(file="Interface/CREDITS.png")
     can.itemconfigure(image,image=Menu_image)
     fen.bind('k',lance_menu)
 
@@ -6445,7 +6400,7 @@ def lance_menu(y):
         can.delete(image_stage_selec,imagemen,imagebg)
         verif_select=0
 
-    mixer.music.load("MENU.ogg")
+    mixer.music.load("Interface/Sounds/MENU.ogg")
     mixer.music.play()
 
     fen.unbind('k')
@@ -6455,7 +6410,7 @@ def lance_menu(y):
     sub_menu=0
 
     deplmen=0
-    Menu_image=PhotoImage(file=Selec_Menu[indice_menu])
+    Menu_image = PhotoImage(file=f"Interface/{Selec_Menu[indice_menu]}")
 
     fen.bind('<z>', Menu_haut)
     fen.bind('<s>', Menu_bas)
@@ -6469,7 +6424,7 @@ def Quitter_instant(a):
     mixer.music.stop()
 
     can.delete(image)
-    can.create_text(950,500,text="Merci d'avoir""\n""        jouer",font='Times 100 bold',fill="pink")
+    can.create_text(950,500,text="Merci d'avoir""\n""        joué",font='Times 100 bold',fill="pink")
     fen.after(2000,fen.destroy)
 
 def Quitter():
@@ -6477,38 +6432,15 @@ def Quitter():
 
 
     can.delete(image)
-    can.create_text(950,500,text="Merci d'avoir""\n""        jouer",font='Times 100 bold',fill="pink")
+    can.create_text(950,500,text="Merci d'avoir""\n""        joué",font='Times 100 bold',fill="pink")
     fen.after(2000,fen.destroy)
 
 def Commandes():
     global Menu_image,image,sub_menu
 
-
-
-
-
-    Menu_image=PhotoImage(file="COMMANDES.png")
+    Menu_image=PhotoImage(file="Interface/COMMANDES.png")
     can.itemconfigure(image,image=Menu_image)
     fen.bind('k',lance_menu)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -7194,16 +7126,15 @@ for S in range (1, 5):
 
 
 
-
 """creation de la fenetre"""
 
 fen=Tk()
 can=Canvas(fen,heigh=1000,width=1900,bg='black')
 
 mixer.init()
-Y_bruitages= mixer.Sound("Agrab.ogg")
+Y_bruitages= mixer.Sound("Characters/Alexandre/Sounds/Agrab.ogg")
 
-A_bruitages = mixer.Sound("Agrab.ogg")
+A_bruitages = mixer.Sound("Characters/Alexandre/Sounds/Agrab.ogg")
 fen.bind('p',Quitter_instant)
 
 
